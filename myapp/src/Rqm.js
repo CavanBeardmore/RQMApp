@@ -11,24 +11,37 @@ class Rqm extends React.Component {
       this.handleClick = this.handleClick.bind(this);
 
     }
+
     //everytime the button is clicked it increments state by 1
     handleClick(){
       this.setState({
-        index: this.state.index + 1
+        index: Math.floor(Math.random() * 13)
       });
     }
 
     render(){
       const quotesArray = [
-        {quote: 'quote here ', author: '- author'}, 
-        {quote: 'quote here 1', author: '- author 1'}
+        {quote: "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way.", author: '— Michael Scott'}, 
+        {quote: "I talk a lot, so I've learned to just tune myself out...", author: '— Kelly Kapoor'},
+        {quote: "I am Beyoncé always." , author: '— Michael Scott'},
+        {quote: "I am running away from my responsibilities and it feels good.", author: '— Michael Scott'},
+        {quote: "Should have burned this place down when I had the chance.", author: '— Michael Scott'},
+        {quote: "One day Michael came in and complained about a speed bump on the highway. I wonder who he ran over then.", author: '— Jim Halpert'},
+        {quote: "If I don't have some cake soon, I might die.", author: '— Stanley Hudson'},
+        {quote: "Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me.", author: ' — Michael Scott'},
+        {quote: "Whenever I'm about to do something, I think, 'Would an idiot do that?' and if they would, I do not do that thing.", author: '— Dwight Schrute'},
+        {quote: "I'm not superstitious, but I am a little stitious.", author: '— Michael Scott'},
+        {quote: "Bears, beets, Battlestar Galactica.", author: '— Jim Halpert'},
+        {quote: "An office is a place where dreams come true.", author: '— Michael Scott'},
+        {quote: "I wish there was a way to know you're in the good old days before you've actually left them.", author: '— Andy Bernard'}
       ];
       const insertedQuote = quotesArray[this.state.index].quote;
       const insertedAuthor = quotesArray[this.state.index].author;
+      
         return (
           <body>
           <header className="title">
-            <h1>Random Quote Generator</h1> 
+            <h1>The Office Quote Generator</h1> 
           </header>
           <div className="quote-box"> 
             <h2 className="main-quote">{insertedQuote}</h2>
