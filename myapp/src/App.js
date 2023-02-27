@@ -3,13 +3,10 @@ import Rqm from "./Rqm";
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
       return (
         <div>
-        <Rqm />
+          <Rqm />
         </div>
       )
   }

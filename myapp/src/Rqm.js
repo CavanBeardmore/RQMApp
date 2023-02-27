@@ -5,36 +5,35 @@ class Rqm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        index: 0,
+        index: 0
       }
 
-      this.handleChange = this.handleChange.bind(this);
+      this.handleClick = this.handleClick.bind(this);
 
     }
     //everytime the button is clicked it increments state by 1
-    handleChange(){
+    handleClick(){
       this.setState({
         index: this.state.index + 1
       });
     }
 
     render(){
-
       const quotesArray = [
         {quote: 'quote here ', author: '- author'}, 
-        {quote: 'quote here', author: '- author'}
-      ]
-
-      let insertedQuote = '';
-      let insertedAuthor = '';
-
+        {quote: 'quote here 1', author: '- author 1'}
+      ];
+      const insertedQuote = quotesArray[this.state.index].quote;
+      const insertedAuthor = quotesArray[this.state.index].author;
         return (
           <body>
-          <header className="title"> Random Quote Generator </header>
+          <header className="title">
+            <h1>Random Quote Generator</h1> 
+          </header>
           <div className="quote-box"> 
-            <h1 className="main-quote"> 'Quote' {insertedQuote} </h1>
-            <p className="author"> 'author' {insertedAuthor}</p>
-            <button className="next-button" onClick={this.handleChange()}> Next Quote </button>
+            <h2 className="main-quote">{insertedQuote}</h2>
+            <p className="author">{insertedAuthor}</p>
+            <button className="next-button" onClick={this.handleClick}> Next Quote </button>
           </div>
           </body>
         )
