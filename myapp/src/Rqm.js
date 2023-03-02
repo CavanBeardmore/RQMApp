@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from 'react-bootstrap';
 import Styles from './Styles.scss'
 
 class Rqm extends React.Component {
@@ -41,14 +40,16 @@ class Rqm extends React.Component {
       const insertedAuthor = this.state.quotes[this.state.index].author;
       
         return (
-          <body>
+          <body className="body-bg">
           <header className="title">
-            <h1>The Office Quote Generator</h1> 
+            <h1 className="title">The Office Quote Generator</h1> 
           </header>
-          <div className=" col-md-12 quote-box"> 
-            <h2 className="main-quote">{insertedQuote}</h2>
+          <br />
+          <div className="quote-box"> 
+            <h2 className="main-quote">"{insertedQuote}"</h2>
             <p className="author">{insertedAuthor}</p>
-            <button className="btn btn-primary next-button" onClick={this.handleClick}> Next Quote </button>
+            <button className="next-button btn btn-primary " onClick={this.handleClick}> Next Quote </button>
+            <button className="quote-tweet btn btn-primary"> Tweet Quote </button>
           </div>
           </body>
         )
