@@ -1,3 +1,4 @@
+import randomColor from "randomcolor";
 import React from "react";
 import Styles from './Styles.scss'
 
@@ -6,6 +7,7 @@ class Rqm extends React.Component {
       super(props);
       this.state = {
         index: 0,
+        rColor: 'blue',
         quotes: [
           {quote: "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way.", author: '— Michael Scott'}, 
           {quote: "I talk a lot, so I've learned to just tune myself out...", author: '— Kelly Kapoor'},
@@ -25,12 +27,18 @@ class Rqm extends React.Component {
 
       this.handleClick = this.handleClick.bind(this);
 
+      const randomColor = require('randomcolor');
+
     }
 
     //everytime the button is clicked it increments state by 1
     handleClick(){
       this.setState({
-        index: Math.floor(Math.random() * this.state.quotes.length)
+        index: Math.floor(Math.random() * this.state.quotes.length),
+        rColor: randomColor({
+          luminosity: 'bright',
+          format: 'rgb'
+        })
       });
     }
 
@@ -39,17 +47,20 @@ class Rqm extends React.Component {
       const insertedQuote = this.state.quotes[this.state.index].quote;
       const insertedAuthor = this.state.quotes[this.state.index].author;
       
+      const colour = {color: this.state.rColor};
+      const bgColour = {backgroundColor: this.state.rColor};
+      
         return (
-          <body className="body-bg">
+          <body style={ bgColour } className="body-bg">
           <header className="title">
             <h1 className="title">The Office Quote Generator</h1> 
           </header>
           <br />
           <div className="quote-box"> 
-            <h2 className="main-quote">"{insertedQuote}"</h2>
-            <p className="author">{insertedAuthor}</p>
+            <h2 className="main-quote" style={ colour }>"{insertedQuote}"</h2>
+            <p className="author" style={ colour }>{insertedAuthor} </p>
             <button className="next-button btn btn-primary " onClick={this.handleClick}> Next Quote </button>
-            <button className="quote-tweet btn btn-primary"> Tweet Quote </button>
+            <a href={`https://twitter.com/intent/tweet?text=${insertedQuote}${insertedAuthor}`} target="_blank" rel="noreferrer noopener" class="quote-tweet btn btn-primary"> Tweet Quote </a>
           </div>
           </body>
         )
