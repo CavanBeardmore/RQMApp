@@ -5,6 +5,7 @@ import Styles from './Styles.scss'
 class Rqm extends React.Component {
     constructor(props) {
       super(props);
+       //state containing index number, the quotes array, and the randomly generated colour
       this.state = {
         index: 0,
         rColor: 'blue',
@@ -24,14 +25,16 @@ class Rqm extends React.Component {
           {quote: "I wish there was a way to know you're in the good old days before you've actually left them.", author: '— Andy Bernard'}
         ]
       }
-
+       //binding this to handleclick
       this.handleClick = this.handleClick.bind(this);
-
+      
+       //random colour variable
       const randomColor = require('randomcolor');
 
     }
 
-    //everytime the button is clicked it increments state by 1
+    //everytime the button is clicked sets index to a random number that is max the length of quotesarray
+    //also generates a random colour and sets rcolor in state to this
     handleClick(){
       this.setState({
         index: Math.floor(Math.random() * this.state.quotes.length),
@@ -43,10 +46,10 @@ class Rqm extends React.Component {
     }
 
     render(){
-
+       //assigns these two variables the value of quote and author from the index of the array
       const insertedQuote = this.state.quotes[this.state.index].quote;
       const insertedAuthor = this.state.quotes[this.state.index].author;
-      
+      //inline css as provided by state
       const colour = {color: this.state.rColor};
       const bgColour = {backgroundColor: this.state.rColor};
       
